@@ -10,21 +10,18 @@ git commit -m "Initial portfolio site"
 git branch -M main
 ```
 
-## 2) Create a GitHub repo
+## 2) Create your GitHub Pages repo
 
-Use one of these:
+Create this exact public repository under your account:
 
-1. `thirtha17.github.io` (recommended for your main personal site URL)
-2. `blackhole-portfolio` (project site URL with repo path suffix)
+`Thirtha17.github.io`
 
 Then connect your local folder:
 
 ```bash
-git remote add origin https://github.com/thirtha17/REPO_NAME.git
+git remote add origin https://github.com/Thirtha17/Thirtha17.github.io.git
 git push -u origin main
 ```
-
-Replace `REPO_NAME` with your actual repository name.
 
 ## 3) Enable Pages in GitHub
 
@@ -37,6 +34,4 @@ The included workflow (`.github/workflows/pages.yml`) will deploy automatically 
 
 ## 4) Your live URL
 
-1. If repo is `thirtha17.github.io`: `https://thirtha17.github.io/`
-2. If repo is `blackhole-portfolio`: `https://thirtha17.github.io/blackhole-portfolio/`
-
+`https://thirtha17.github.io/`
