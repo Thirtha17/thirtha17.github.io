@@ -184,8 +184,8 @@ h2 {
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(circle at 50% 52%, rgba(32, 60, 86, 0.55) 0%, rgba(13, 43, 69, 0.25) 46%, rgba(0, 0, 0, 0) 78%),
-    radial-gradient(circle at 50% 52%, rgba(255, 170, 94, 0.1) 0%, rgba(0, 0, 0, 0) 62%);
+    radial-gradient(circle at 50% 52%, rgba(80, 40, 10, 0.6) 0%, rgba(50, 20, 5, 0.25) 46%, rgba(0, 0, 0, 0) 78%),
+    radial-gradient(circle at 50% 52%, rgba(255, 140, 50, 0.22) 0%, rgba(0, 0, 0, 0) 62%);
   filter: blur(6px);
 }
 
@@ -636,23 +636,10 @@ h2 {
   color: var(--accent-2);
 }
 
-#work-grid .card {
-  border-color: rgba(20, 55, 110, 0.55);
+#highlights.card-grid {
+  grid-template-columns: 1fr;
 }
 
-#outreach-grid .card {
-  border-color: var(--line);
-  background: var(--surface);
-}
-
-#leadership-grid .card.with-image {
-  grid-template-columns: minmax(78px, 24%) 1fr;
-}
-
-#leadership-grid .card-media {
-  max-width: 108px;
-  justify-self: start;
-}
 
 .meta {
   color: var(--accent-2);
@@ -896,12 +883,17 @@ h2 {
 }
 
 .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-ready .reveal {
   opacity: 0;
   transform: translateY(15px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.reveal.show {
+.js-ready .reveal.show {
   opacity: 1;
   transform: translateY(0);
 }

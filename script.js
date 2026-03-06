@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js-ready");
+
 const content = {
   about:
     "I am a Physics major and Astronomy minor at Truman State University. My work spans EMRI and SMBH merger science for LISA, simulation-driven astrophysics, and engineering projects where physics meets code and hardware.",
@@ -157,7 +159,7 @@ const content = {
       fullText:
         "Organized community observing nights, telescope demonstrations, and introductory sky-navigation sessions for students and local participants.\n\nCollected and communicated light-pollution observations to support dark-sky awareness and practical local outreach initiatives.",
       image: "assets/outreach-stargazing.png",
-      imageUseNaturalAspect: true,!
+      imageUseNaturalAspect: true,
       // imageAlt: "Students stargazing with telescopes under a night sky.",
       // imageCaption: "Community stargazing nights and dark-sky awareness work.",
       images: [
@@ -900,14 +902,14 @@ if (travelMap) {
         if (typeof controller.setProjection === "function") controller.setProjection("globe");
 
         // Dark navy globe aligned with site theme, with strong visited-country contrast
-        if (typeof controller.setOceanColor === "function") controller.setOceanColor("#0f2740");
-        if (typeof controller.setColor === "function") controller.setColor("#5c7ca3");
-        if (typeof controller.setSurfaceColor === "function") controller.setSurfaceColor("#4d6f96");
-        if (typeof controller.setSelectedColor === "function") controller.setSelectedColor("#ff9f43");
-        if (typeof controller.setHaloColor === "function") controller.setHaloColor("#8bcaff");
-        if (typeof controller.setTextColor === "function") controller.setTextColor("#d9eaff");
-        if (typeof controller.setLightColor === "function") controller.setLightColor("#f4f8ff");
-        if (typeof controller.setLightIntensity === "function") controller.setLightIntensity(0.55);
+        if (typeof controller.setOceanColor === "function") controller.setOceanColor("#060c10");
+        if (typeof controller.setColor === "function") controller.setColor("#1e2e1e");
+        if (typeof controller.setSurfaceColor === "function") controller.setSurfaceColor("#182818");
+        if (typeof controller.setSelectedColor === "function") controller.setSelectedColor("#ffaa5e");
+        if (typeof controller.setHaloColor === "function") controller.setHaloColor("#d08159");
+        if (typeof controller.setTextColor === "function") controller.setTextColor("#ffd4a3");
+        if (typeof controller.setLightColor === "function") controller.setLightColor("#ffcb8a");
+        if (typeof controller.setLightIntensity === "function") controller.setLightIntensity(0.6);
         if (typeof controller.setShowingGraticule === "function") controller.setShowingGraticule(false);
 
         // Hide route lines while preserving visited-country highlighting logic
@@ -968,9 +970,15 @@ content.skills.forEach((skill, i) => {
 
 content.highlights.forEach((h) => {
   if (!highlightsWrap) return;
-  const li = document.createElement("li");
-  li.textContent = h;
-  highlightsWrap.appendChild(li);
+  const card = document.createElement("article");
+  card.className = "card";
+  const body = document.createElement("div");
+  body.className = "card-body";
+  const title = document.createElement("h3");
+  title.textContent = h;
+  body.appendChild(title);
+  card.appendChild(body);
+  highlightsWrap.appendChild(card);
 });
 
 content.contacts.forEach((c) => {
@@ -1045,21 +1053,26 @@ function animateCounters() {
   });
 }
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        if (entry.target.id === "about") {
-          animateCounters();
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          if (entry.target.id === "about") {
+            animateCounters();
+          }
         }
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("show"));
+  animateCounters();
+}
 
 const navLinks = Array.from(document.querySelectorAll(".nav a"));
 const currentPath = window.location.pathname;
@@ -1162,7 +1175,7 @@ function drawBinaryMergerFrame() {
   }
 
   wavePulses.forEach((pulse) => {
-    bhCtx.strokeStyle = `rgba(143, 205, 255, ${pulse.alpha})`;
+    bhCtx.strokeStyle = `rgba(255, 160, 80, ${pulse.alpha})`;
     bhCtx.lineWidth = pulse.width;
     bhCtx.beginPath();
     bhCtx.ellipse(cx, cy, pulse.radius, pulse.radius * 0.58, 0, 0, Math.PI * 2);
