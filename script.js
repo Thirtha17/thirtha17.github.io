@@ -157,7 +157,7 @@ const content = {
       fullText:
         "Organized community observing nights, telescope demonstrations, and introductory sky-navigation sessions for students and local participants.\n\nCollected and communicated light-pollution observations to support dark-sky awareness and practical local outreach initiatives.",
       image: "assets/outreach-stargazing.png",
-      imageUseNaturalAspect: true,
+      imageUseNaturalAspect: true,!
       // imageAlt: "Students stargazing with telescopes under a night sky.",
       // imageCaption: "Community stargazing nights and dark-sky awareness work.",
       images: [
@@ -1162,7 +1162,7 @@ function drawBinaryMergerFrame() {
   }
 
   wavePulses.forEach((pulse) => {
-    bhCtx.strokeStyle = `rgba(255, 212, 163, ${pulse.alpha})`;
+    bhCtx.strokeStyle = `rgba(143, 205, 255, ${pulse.alpha})`;
     bhCtx.lineWidth = pulse.width;
     bhCtx.beginPath();
     bhCtx.ellipse(cx, cy, pulse.radius, pulse.radius * 0.58, 0, 0, Math.PI * 2);
@@ -1172,7 +1172,7 @@ function drawBinaryMergerFrame() {
   if (phase < mergeEnd && mergerTick % 22 === 0) {
     wavePulses.push({
       radius: base * 0.06,
-      alpha: 0.28 + phase * 0.25,
+      alpha: 0.22 + phase * 0.25,
       speed: 1.8 + phase * 2.3,
       width: 1.2 + phase * 1.8
     });
@@ -1181,7 +1181,7 @@ function drawBinaryMergerFrame() {
   if (phase > mergeStart && phase < mergeEnd && mergerTick % 9 === 0) {
     wavePulses.push({
       radius: base * 0.07,
-      alpha: 0.56,
+      alpha: 0.48,
       speed: 3.2,
       width: 2.2
     });
@@ -1190,7 +1190,7 @@ function drawBinaryMergerFrame() {
   if (isMerged && mergerTick % 8 === 0) {
     wavePulses.push({
       radius: base * 0.085,
-      alpha: 0.5,
+      alpha: 0.42,
       speed: 3.5,
       width: 2.6
     });
@@ -1198,8 +1198,8 @@ function drawBinaryMergerFrame() {
 
   function drawHole(x, y, r) {
     const subtleGlow = bhCtx.createRadialGradient(x, y, r * 0.7, x, y, r * 1.9);
-    subtleGlow.addColorStop(0, "rgba(255, 170, 94, 0.2)");
-    subtleGlow.addColorStop(0.65, "rgba(208, 129, 89, 0.1)");
+    subtleGlow.addColorStop(0, "rgba(255, 106, 0, 0.2)");
+    subtleGlow.addColorStop(0.65, "rgba(255, 145, 0, 0.1)");
     subtleGlow.addColorStop(1, "rgba(0,0,0,0)");
     bhCtx.fillStyle = subtleGlow;
     bhCtx.beginPath();
@@ -1211,7 +1211,7 @@ function drawBinaryMergerFrame() {
     bhCtx.arc(x, y, r, 0, Math.PI * 2);
     bhCtx.fill();
 
-    bhCtx.strokeStyle = "rgba(255,170,94,0.45)";
+    bhCtx.strokeStyle = "rgba(255,106,0,0.38)";
     bhCtx.lineWidth = 1.1;
     bhCtx.beginPath();
     bhCtx.arc(x, y, r * 1.06, 0, Math.PI * 2);
