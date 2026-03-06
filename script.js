@@ -903,10 +903,12 @@ if (travelMap) {
 
         // Dark navy globe aligned with site theme, with strong visited-country contrast
         if (typeof controller.setOceanColor === "function") controller.setOceanColor("#060c10");
-        if (typeof controller.setColor === "function") controller.setColor("#1e2e1e");
-        if (typeof controller.setSurfaceColor === "function") controller.setSurfaceColor("#182818");
-        if (typeof controller.setSelectedColor === "function") controller.setSelectedColor("#ffaa5e");
-        if (typeof controller.setHaloColor === "function") controller.setHaloColor("#d08159");
+        if (typeof controller.setColor === "function") controller.setColor("#23374b");
+        if (typeof controller.setSurfaceColor === "function") controller.setSurfaceColor("#1a2d40");
+        // Distinct oranges: visited countries vs actively selected country.
+        if (typeof controller.setRelatedColor === "function") controller.setRelatedColor("#ffb347");
+        if (typeof controller.setSelectedColor === "function") controller.setSelectedColor("#d96a1f");
+        if (typeof controller.setHaloColor === "function") controller.setHaloColor("#ffb870");
         if (typeof controller.setTextColor === "function") controller.setTextColor("#ffd4a3");
         if (typeof controller.setLightColor === "function") controller.setLightColor("#ffcb8a");
         if (typeof controller.setLightIntensity === "function") controller.setLightIntensity(0.6);
@@ -919,8 +921,8 @@ if (travelMap) {
         // Keep non-visited countries visible, but make visited countries stand out
         if (typeof controller.lightenMentioned === "function") controller.lightenMentioned(true);
         if (typeof controller.adjustOceanBrightness === "function") controller.adjustOceanBrightness(0.36);
-        if (typeof controller.adjustMentionedBrightness === "function") controller.adjustMentionedBrightness(1.12);
-        if (typeof controller.adjustRelatedBrightness === "function") controller.adjustRelatedBrightness(0.88);
+        if (typeof controller.adjustMentionedBrightness === "function") controller.adjustMentionedBrightness(1.32);
+        if (typeof controller.adjustRelatedBrightness === "function") controller.adjustRelatedBrightness(1.08);
         if (typeof controller.disableUnmentioned === "function") controller.disableUnmentioned(false);
 
         if (typeof controller.addData === "function") controller.addData(routes);
