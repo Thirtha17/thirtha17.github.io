@@ -33,6 +33,19 @@ const content = {
   },
   research: [
     {
+      title: "Sky Localization of EMRIs for LISA",
+      place: "Caltech, Pasadena, CA",
+      date: "Jun 2026 - Present",
+      text: "Developing Bayesian pipelines with parallel-tempered MCMC to characterize how EMRI parameter degeneracies affect LISA sky localization accuracy.",
+      fullText:
+        "As part of the Caltech Summer Undergraduate Research Fellowship (SURF), I am developing Bayesian pipelines to characterize EMRI sky localization accuracy for LISA, analyzing how degeneracies across the 14-dimensional EMRI parameter space (intrinsic: M, mu, a, p0, e0; extrinsic: dL, sky angles, spin orientation angles, initial phases) affect angular resolution.\n\nI run parallel-tempered MCMC inference using Eryn on FastEMRIWaveforms-generated signals, studying posterior distributions over sky position parameters (theta_S, phi_S) as a function of source properties and observation duration. I am also evaluating the impact of waveform mode truncation thresholds on sky localization bias, extending the mode selection threshold study from the JPL capstone pipeline.",
+      image: "assets/blackhole.gif",
+      imageAlt: "Black hole animation used for EMRI sky localization research.",
+      imageCaption: "Sky localization analysis for EMRI signals detectable by LISA.",
+      imageUseNaturalAspect: true,
+      links: [{ label: "GitHub", href: "https://github.com/thirtha17" }]
+    },
+    {
       title: "Analyzing EMRIs for LISA",
       place: "NASA JPL, Pasadena, CA",
       date: "Jun 2025 - Present",
@@ -732,11 +745,33 @@ addCards(
   content.experience.filter((item) => item.type === "outreach")
 );
 
+const statDestinationByLabel = {
+  "Research Roles": "research.html#research",
+  Presentations: "research.html#conferences"
+};
+
 content.stats.forEach((s) => {
   if (!statsWrap) return;
   const el = document.createElement("div");
   el.className = "stat";
   if (s.flash) el.classList.add("flash-stat");
+  const destination = statDestinationByLabel[s.label];
+  if (destination) {
+    el.tabIndex = 0;
+    el.setAttribute("role", "link");
+    el.setAttribute("aria-label", `Open ${s.label}`);
+    el.style.cursor = "pointer";
+    const navigate = () => {
+      window.location.href = destination;
+    };
+    el.addEventListener("click", navigate);
+    el.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        navigate();
+      }
+    });
+  }
   const isNumeric = s.type !== "text" && Number.isFinite(Number(String(s.value).replace("+", "")));
 
   if (s.logo) {
